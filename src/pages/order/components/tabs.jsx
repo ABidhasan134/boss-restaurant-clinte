@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../hooks/useMenu';
@@ -6,7 +6,13 @@ import FoodCard from '../../../shared/foodCard';
 import MenuCatagory from './menuCatagory';
 
 const Tabsown = () => {
+  const catagorys=["salad","pizza","soup","dessert","offered"]
     const [menu]=useMenu();
+    const initalIndex=catagorys.indexOf(menu);
+    console.log(initalIndex);
+    const [tabIndex, setTabIndex] = useState(initalIndex);
+    
+    // console.log(tabIndex);
     // console.log(menu);
     const dessert=menu.filter(itme=>itme.category==="dessert");
     const pizza=menu.filter(itme=>itme.category==="pizza");
@@ -15,12 +21,12 @@ const Tabsown = () => {
     const offered=menu.filter(itme=>itme.category==="offered");
     // console.log(offered);
   return (
-    <Tabs>
+    <Tabs defaultIndex={tabIndex} selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
     <TabList>
-      <Tab>Salad</Tab>
-      <Tab>Pizza</Tab>
+      <Tab>salad</Tab>
+      <Tab>pizza</Tab>
       <Tab>soup</Tab>
-      <Tab>Dessert</Tab>
+      <Tab>dessert</Tab>
       <Tab>offered</Tab>
     </TabList>
 
