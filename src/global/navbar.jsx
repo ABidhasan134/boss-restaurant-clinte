@@ -9,6 +9,7 @@ const Navbar = () => {
     <li><Link to="/menu">Our Menu</Link></li>
     <li><Link to="/order/salad">Order</Link></li>
     <li><Link to="/login">Log in</Link></li>
+    <li><Link to="/singIn">sing In</Link></li>
     </>
   return (
     <div className="navbar fixed bg-black  z-10 bg-opacity-50 container mx-auto rounded-xl text-white">
