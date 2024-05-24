@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../context/authProvider';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const LogIn = () => {
   const captchaRef=useRef(null);
@@ -35,6 +37,10 @@ const LogIn = () => {
     console.log(user_captcha_value);
   }
   return (
+    <>
+    <Helmet>
+      <title>Boss || Log In</title>
+    </Helmet>
     <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
@@ -70,9 +76,11 @@ const LogIn = () => {
           <button disabled={disable} className="btn btn-primary">Login</button>
         </div>
       </form>
+      <p>If you are already have an account please<Link to="/singIn" className='text-blue-500'> Sing Up</Link></p>
     </div>
   </div>
 </div>
+    </>
   )
 }
 
