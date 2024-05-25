@@ -1,26 +1,44 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import Swal from 'sweetalert2'
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../context/authProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const LogIn = () => {
   const captchaRef=useRef(null);
   const [disable,setDisable]=useState(true);
-  const {singIn}=useContext(AuthContext);
+  const {signIn}=useContext(AuthContext);
+  const navigate=useNavigate();
+
+  const location =useLocation();
+  const from= location.state?.from?.pathname || "/"
+  // captcha loading  for 6 carecters
   useEffect(()=>{
     loadCaptchaEnginge(6); 
   },[])
+  // log in user 
   const handelLogIn=(e)=>{
     e.preventDefault();
     const email=e.target.email.value;
     const password=e.target.password.value;
     console.log(password,email)
-    singIn(email,password)
-    then((userCredential) => {
+    signIn(email,password)
+    .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "You are Log in successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(()=>{
+
+        navigate(from,{replace: true})
+      },2000)
       // ...
     })
     .catch((error) => {
@@ -71,7 +89,7 @@ const LogIn = () => {
           </label>
           <input ref={captchaRef} type="capthcha" placeholder="capthcha" name='capthcha' className="input input-bordered" required />
         </div>
-        <button className="btn btn-outline btn-success btn-xs text-white"  onClick={handelvalidateCaptcha}>validate</button>
+        <button className="btn btn-outline btn-success btn-xs text-white"  onBlur={handelvalidateCaptcha}>validate</button>
         <div className="form-control mt-6">
           <button disabled={disable} className="btn btn-primary">Login</button>
         </div>

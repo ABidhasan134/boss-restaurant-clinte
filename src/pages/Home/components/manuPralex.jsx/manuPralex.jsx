@@ -10,7 +10,7 @@ const ManuPralex = () => {
     const currentYear = currentDate.getFullYear();
     
     const dateString = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
-    console.log(dateString);
+    // console.log(dateString);
   return (
    <div>
     <TitelandSub heading="check it out" subtitel="From our menu"></TitelandSub>

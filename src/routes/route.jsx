@@ -8,6 +8,8 @@ import Manu from "../pages/menu page/manu";
 import Order from "../pages/order/order";
 import LogIn from "../pages/log/logIn";
 import Register from "../register/register";
+import Sceret from "../pages/sceret";
+import PrivetRoutes from "./privet";
 
 const routers = createBrowserRouter([
     {
@@ -33,6 +35,10 @@ const routers = createBrowserRouter([
         {
           path: "/singIn",
           element: <Register></Register>
+        },
+        {
+          path: "/sequer",
+          element: <PrivetRoutes><Sceret></Sceret></PrivetRoutes> 
         }
       ]
     }

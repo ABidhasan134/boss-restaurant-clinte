@@ -4,18 +4,23 @@ import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../hooks/useMenu';
 import FoodCard from '../../../shared/foodCard';
 import MenuCatagory from './menuCatagory';
+import { useLocation } from 'react-router-dom';
 
 const Tabsown = () => {
-  const catagorys=["salad","pizza","soup","dessert","offered"]
+  const location =useLocation();
+  console.log(location.pathname)
+  const catagorys=["salad","pizzas","soup","dessert","offered"]
     const [menu]=useMenu();
-    const initalIndex=catagorys.indexOf(menu);
+    console.log(menu);
+    const initialCategory = location.pathname.split('/').pop();
+    console.log(initialCategory);
+    const initalIndex=catagorys.indexOf(initialCategory);
     console.log(initalIndex);
     const [tabIndex, setTabIndex] = useState(initalIndex);
     
     // console.log(tabIndex);
-    // console.log(menu);
     const dessert=menu.filter(itme=>itme.category==="dessert");
-    const pizza=menu.filter(itme=>itme.category==="pizza");
+    const pizza=menu.filter(itme=>itme.category==="pizzas");
     const soup=menu.filter(itme=>itme.category==="soup");
     const salad=menu.filter(itme=>itme.category==="salad");
     const offered=menu.filter(itme=>itme.category==="offered");

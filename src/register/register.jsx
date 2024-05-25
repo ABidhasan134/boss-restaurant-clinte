@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import singInImg from "../assets/singIn/AdobeStock_121324332_Preview.jpeg";
 import { useForm } from "react-hook-form";
-import {Link} from "react-router-dom"
+import {Link, Navigate, useNavigate} from "react-router-dom"
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../context/authProvider';
 
 const Register = () => {
   const {createUser}=useContext(AuthContext);
+  const navegate=useNavigate()
   const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
   
   const onSubmit = (data) => {
@@ -14,6 +15,7 @@ const Register = () => {
     createUser(data.email, data.password)
     .then((result)=>{
       const loggedUser=result.user;
+      navegate("/")
       // console.log(loggedUser)
     })
     reset()
