@@ -8,14 +8,14 @@ import { useLocation } from 'react-router-dom';
 
 const Tabsown = () => {
   const location =useLocation();
-  console.log(location.pathname)
+  // console.log(location.pathname)
   const catagorys=["salad","pizzas","soup","dessert","offered"]
     const [menu]=useMenu();
-    console.log(menu);
+    // console.log(menu);
     const initialCategory = location.pathname.split('/').pop();
-    console.log(initialCategory);
+    // console.log(initialCategory);
     const initalIndex=catagorys.indexOf(initialCategory);
-    console.log(initalIndex);
+    // console.log(initalIndex);
     const [tabIndex, setTabIndex] = useState(initalIndex);
     
     // console.log(tabIndex);

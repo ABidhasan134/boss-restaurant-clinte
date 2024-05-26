@@ -14,6 +14,7 @@ const LogIn = () => {
 
   const location =useLocation();
   const from= location.state?.from?.pathname || "/"
+  console.log(location.state);
   // captcha loading  for 6 carecters
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -91,7 +92,8 @@ const LogIn = () => {
         </div>
         <button className="btn btn-outline btn-success btn-xs text-white"  onBlur={handelvalidateCaptcha}>validate</button>
         <div className="form-control mt-6">
-          <button disabled={disable} className="btn btn-primary">Login</button>
+          {/* todo: re disable for reCaptcha */}
+          <button disabled={false} className="btn btn-primary">Login</button>
         </div>
       </form>
       <p>If you are already have an account please<Link to="/singIn" className='text-blue-500'> Sing Up</Link></p>
