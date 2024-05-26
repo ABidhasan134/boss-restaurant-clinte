@@ -10,6 +10,8 @@ import LogIn from "../pages/log/logIn";
 import Register from "../register/register";
 import Sceret from "../pages/sceret";
 import PrivetRoutes from "./privet";
+import Dashbord from "../layout/dashbord";
+import MyCart from "../pages/Dashbord/myCart/myCart";
 
 const routers = createBrowserRouter([
     {
@@ -39,6 +41,17 @@ const routers = createBrowserRouter([
         {
           path: "/sequer",
           element: <PrivetRoutes><Sceret></Sceret></PrivetRoutes> 
+        }
+      ]
+    },
+    {
+      path: "/dashboard",
+      element: <Dashbord></Dashbord>,
+      children: [
+        {
+          path: "mylist", //this is relative path when we use /cart it becomes absolute path 
+          element: <MyCart></MyCart>
+
         }
       ]
     }

@@ -5,7 +5,7 @@ import { AuthContext } from '../context/authProvider';
 
 const useCards = () => {
     const {user}=useContext(AuthContext);
-    console.log(user?.email)
+    // console.log(user?.email)
     const axiousSecquer=useAxiosSequer();
     const {refetch,data: card=[]}=useQuery({
         queryKey: ['card',user?.email],
