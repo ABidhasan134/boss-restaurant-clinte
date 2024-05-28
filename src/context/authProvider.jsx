@@ -1,12 +1,15 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase';
-import { createUserWithEmailAndPassword, onAuthStateChanged,updateProfile , signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged,updateProfile , signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import useAxiousPublic from '../hooks/useAxiousPublic';
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  const provider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublice= useAxiousPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -31,7 +34,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
       setLoading(false);
+      if(currentUser){
+        const userInfo={email: currentUser.email};
+        axiosPublice.post("/jwt",userInfo)
+        .then((res)=>{
+          // console.log(res.data)
+          localStorage.setItem("access_token",res.data,{
+            
+          })
+        })
+      }
+      else{
+        localStorage.removeItem("access_token")
+      }
     });
 
     return () => {
@@ -39,7 +56,12 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { user, loading, setUser, setLoading, createUser, signIn, logOut,updateUser };
+  const googleSingIn=()=>{
+    setLoading(true);
+    return signInWithPopup(auth, provider)
+  }
+
+  const authInfo = { user, loading, setUser, setLoading, createUser, signIn, logOut,updateUser,googleSingIn };
 
   return (
     <AuthContext.Provider value={authInfo}>

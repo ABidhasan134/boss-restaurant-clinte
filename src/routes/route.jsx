@@ -12,6 +12,7 @@ import Sceret from "../pages/sceret";
 import PrivetRoutes from "./privet";
 import Dashbord from "../layout/dashbord";
 import MyCart from "../pages/Dashbord/myCart/myCart";
+import AllUser from "../pages/Dashbord/alluser/AllUser";
 
 const routers = createBrowserRouter([
     {
@@ -46,12 +47,16 @@ const routers = createBrowserRouter([
     },
     {
       path: "/dashboard",
-      element: <Dashbord></Dashbord>,
+      element:<PrivetRoutes><Dashbord></Dashbord></PrivetRoutes>,
       children: [
         {
-          path: "mylist", //this is relative path when we use /cart it becomes absolute path 
+          path: "myCart", //this is relative path when we use /cart it becomes absolute path 
           element: <MyCart></MyCart>
 
+        },
+        {
+          path: "allUser",
+          element: <AllUser></AllUser>
         }
       ]
     }

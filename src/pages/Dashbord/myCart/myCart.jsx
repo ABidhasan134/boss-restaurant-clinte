@@ -1,7 +1,6 @@
 import React from 'react'
 import useCards from '../../../hooks/useCards'
-import { SlNote } from "react-icons/sl";
-import { MdDelete } from "react-icons/md";
+
 import TableRow from './components/tableRow';
 
 const MyCart = () => {
@@ -10,6 +9,11 @@ const MyCart = () => {
   // console.log(total);
   return (
     <div className="overflow-x-auto">
+       <div className='flex justify-center font-bold text-3xl'> 
+        <h1>All My food List</h1>
+      </div>
+      
+
   <table className="table">
     {/* head */}
     <thead>

@@ -25,7 +25,7 @@ const TableRow = ({item,index}) => {
              .then((res)=>{
                 console.log(res.data);
                 if(res.data.deletedCount>0){
-                    refetch()
+                  refetch()
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",

@@ -27,7 +27,7 @@ const Navbar = () => {
       <li>
         <Link to="/sequer">Secquert Recipi</Link>
       </li>
-      <Link to='/dashboard/mylist'>
+      <Link to='/dashboard/myCart'>
       <button className="btn">
        <HiShoppingCart></HiShoppingCart>
         <div className="badge badge-secondary">+{card.length}</div>
