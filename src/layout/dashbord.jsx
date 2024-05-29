@@ -6,15 +6,17 @@ import { MdOutlineReviews } from "react-icons/md";
 import { CiBoxList } from "react-icons/ci";
 import './style.css'
 import { CiShop } from "react-icons/ci";
+import useAdmin from '../hooks/useAdmin';
 const Dashbord = () => {
-  const admain =true;
+  const [isAdmin] =useAdmin();
+  console.log(isAdmin);
   return (
     <div className='flex'>
         {/* dashbord sidebar */}
       <div className='min-h-screen bg-[#D1A054]'>
     
                 {
-                  admain?<ul>
+                  isAdmin?<ul>
                   <li ><NavLink to="/dashboard/userhome" className='flex text-black items-center p-2 rounded-xl m-4'><FaHome></FaHome> Admain Home </NavLink></li>                
                   <li ><NavLink to="/dashboard/bookings" className='flex text-black  items-center p-2 rounded-xl m-4'><MdFoodBank></MdFoodBank> Add user </NavLink></li>                
                   <li ><NavLink to="/dashboard/cart" className='flex text-black items-center p-2 rounded-xl m-4'><FaCartPlus></FaCartPlus> Manage Items </NavLink></li>                

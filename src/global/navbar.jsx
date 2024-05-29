@@ -7,7 +7,7 @@ import useCards from "../hooks/useCards";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [card]=useCards();
-  console.log(card);
+  // console.log(card);
   const handelLogOut = () => {
     logOut()
       .then(() => {})
