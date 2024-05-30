@@ -19,7 +19,7 @@ const AlluserCard = ({ item, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/users/${id}`).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -33,7 +33,7 @@ const AlluserCard = ({ item, index, refetch }) => {
     });
   };
   const handelMakeAdmain = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -45,7 +45,7 @@ const AlluserCard = ({ item, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.patch(`users/admin/${id}`).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data.modifiedCount > 0) {
             refetch();
             Swal.fire({
@@ -62,8 +62,8 @@ const AlluserCard = ({ item, index, refetch }) => {
   return (
     <tr>
       <th>{index + 1}</th>
-      <td>{item.email}</td>
       <td>{item.name}</td>
+      <td>{item.email}</td>
       {
       item.role?<p className="text-green-500 font-semibold">Admin</p>:<button
       className="btn text-3xl btn-square hover:text-green-500"
