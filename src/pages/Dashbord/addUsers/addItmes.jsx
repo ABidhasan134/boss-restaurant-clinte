@@ -3,17 +3,18 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import TitelandSub from "../../../shared/titelandSub";
 import useAxiosSequer from "../../../hooks/useAxiosSequer";
+import Swal from 'sweetalert2'
 
 const IMG_HOSTING_KEY = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const img_hoting_api = `https://api.imgbb.com/1/upload?key=${IMG_HOSTING_KEY}`;
 
 const AddItems = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors },reset } = useForm();
+  const axiosSecure=useAxiosSequer();
 
   const onSubmit = async (data) => {
-    const axiosSecure=useAxiosSequer();
     
-    console.log(data);
+    // console.log(data);
 
     const formData = new FormData();
     formData.append('image', data.image[0]);
@@ -34,13 +35,23 @@ const AddItems = () => {
         const menuItem={
           name: data.recipeName,
           category: data.category,
-          price:  data.price,
+          price:  parseFloat(data.price),
           recipe: data.description,
           image: res.data.data.url
 
         }
         const response = await axiosSecure.post(`/menu`, menuItem);
-        console.log(response.data);
+        if(response.data.insertedId){
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Item add to the menu",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        // console.log(response.data);
         // console.log(menuItem);
       }
     } catch (error) {
@@ -91,7 +102,7 @@ const AddItems = () => {
               <option value="">Select Item</option>
               <option value="salad">Salad</option>
               <option value="dessert">Dessert</option>
-              <option value="pizza">Pizza</option>
+              <option value="pizza">pizza</option>
               <option value="soup">Soup</option>
               <option value="offered">Offered</option>
             </select>

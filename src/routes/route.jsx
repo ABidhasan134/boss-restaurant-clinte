@@ -13,6 +13,8 @@ import Sceret from "../pages/sceret";
 import Register from "../register/register";
 import AdminRoute from "./adminRoute";
 import PrivetRoutes from "./privet";
+import ManageItems from "../pages/Dashbord/manageItems/manageItems";
+import UpdateIttems from "../pages/Dashbord/update/updateIttems";
 
 const routers = createBrowserRouter([
   {
@@ -72,6 +74,10 @@ const routers = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/manageItems",
+        element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+      },
+      {
         path: "adduser",
         element: (
           <AdminRoute>
@@ -79,6 +85,11 @@ const routers = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "/dashboard/updateItems/:id",
+        element: <UpdateIttems></UpdateIttems>,
+        loader: ({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
+      }
     ],
   },
 ]);

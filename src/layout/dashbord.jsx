@@ -21,7 +21,7 @@ const Dashbord = () => {
                   isAdmin?<ul>
                   <li ><NavLink to="/dashboard/userhome" className='flex text-black items-center p-2 rounded-xl m-4'><FaHome></FaHome> Admain Home </NavLink></li>                     
                   <li ><NavLink to="/dashboard/adduser" className='flex text-black  items-center p-2 rounded-xl m-4'><RiUserAddFill></RiUserAddFill>Add user</NavLink></li>                
-                  <li ><NavLink to="/dashboard/cart" className='flex text-black items-center p-2 rounded-xl m-4'><FaCartPlus></FaCartPlus> Manage Items </NavLink></li>                
+                  <li ><NavLink to="/dashboard/manageItems" className='flex text-black items-center p-2 rounded-xl m-4'><FaCartPlus></FaCartPlus> Manage Items </NavLink></li>                
                   <li ><NavLink to="/dashboard/review" className='flex text-black items-center p-2 rounded-xl m-4'><MdOutlineReviews></MdOutlineReviews> Manage Bookings</NavLink></li>                
                   <li ><NavLink to="/dashboard/allUser" className='flex text-black  items-center p-2 rounded-xl m-4'><CiBoxList></CiBoxList>All user</NavLink></li>                
         
