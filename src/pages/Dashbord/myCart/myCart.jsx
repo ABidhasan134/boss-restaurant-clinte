@@ -2,6 +2,7 @@ import React from 'react'
 import useCards from '../../../hooks/useCards'
 
 import TableRow from './components/tableRow';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
   const [card]=useCards();
@@ -41,7 +42,9 @@ const MyCart = () => {
         <th></th>
         <th>price</th>
         <th>{total}</th>
-        <th><button className='btn btn-primary'>pay</button></th>
+        {
+          card.length?<th><Link to="/dashboard/Payment"><button  className='btn btn-primary'>pay</button></Link></th>: <button disabled className='btn btn-primary'>pay</button>
+        }
         <th></th>
       </tr>
       

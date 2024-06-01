@@ -15,6 +15,9 @@ import AdminRoute from "./adminRoute";
 import PrivetRoutes from "./privet";
 import ManageItems from "../pages/Dashbord/manageItems/manageItems";
 import UpdateIttems from "../pages/Dashbord/update/updateIttems";
+import PaymentPage from "../pages/Dashbord/payment/paymentPage";
+import PaymentHistory from "../pages/Dashbord/paymentHistory/paymentHistory";
+
 
 const routers = createBrowserRouter([
   {
@@ -63,6 +66,14 @@ const routers = createBrowserRouter([
       {
         path: "myCart", //this is relative path when we use /cart it becomes absolute path
         element: <MyCart></MyCart>,
+      },
+      {
+        path: '/dashboard/Payment',
+        element: <PaymentPage></PaymentPage>
+      },
+      {
+        path: "/dashboard/PaymentHistory",
+        element: <PaymentHistory></PaymentHistory>
       },
       // admin related route
       {

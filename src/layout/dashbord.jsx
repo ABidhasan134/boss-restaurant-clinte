@@ -30,7 +30,7 @@ const Dashbord = () => {
                 <div class="divider"></div> 
                 <li ><NavLink to="/" className='flex text-black items-center p-2 rounded-xl m-4'><FaHome></FaHome>Home </NavLink></li>                
                 <li ><NavLink to="/dashboard/myCart" className='flex text-black  items-center p-2 rounded-xl m-4'><CiBoxList></CiBoxList>My Order</NavLink></li>                
-                <li ><NavLink to="/" className='flex text-black items-center p-2 rounded-xl m-4'><FaList></FaList>Menu </NavLink></li>                
+                <li ><NavLink to="/dashboard/PaymentHistory" className='flex text-black items-center p-2 rounded-xl m-4'><FaList></FaList>Payment History </NavLink></li>                
                 <li ><NavLink to="/" className='flex text-black items-center p-2 rounded-xl m-4'><CiShop></CiShop>shop </NavLink></li>                
                 <li ><NavLink to="/" className='flex text-black items-center p-2 rounded-xl m-4'><FaPhone></FaPhone>contact </NavLink></li>                
             
