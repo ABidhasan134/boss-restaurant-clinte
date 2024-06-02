@@ -23,8 +23,8 @@ const PaymentHistory = () => {
         <th></th>
         <th>Name</th>
         <th>email</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Transation Id</th>
+        <th>pay time</th>
       </tr>
     </thead>
     <tbody>
@@ -35,8 +35,8 @@ const PaymentHistory = () => {
         <th>{index+1}</th>
         <td>{item.name}</td>
         <td>{item.email}</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
+        <td>{item.id}</td>
+        <td>{item.date}</td>
       </tr>
         })
       }
